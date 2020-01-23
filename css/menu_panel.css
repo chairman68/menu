@@ -1,0 +1,94 @@
+#choice_prod {
+            width: 100%;
+            height: 45%;
+            padding-right: 110px;
+			position: fixed;
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 14pt;
+            top:55%;
+            overflow: scroll;
+            visibility: hidden;
+            display: flex;
+			
+        }
+        .header-choice {
+            width: 100%;
+            height: 5%;
+            top: 50%;
+            background-color: red;
+            position: fixed;
+        }
+		#menu {
+			top: 55%;
+            margin: auto;
+            width: 150px;
+            height: 45%;
+            background-color: gray;
+            z-index: 99;
+			display: flex;
+            flex-direction: column;
+            position: fixed;
+			
+        }
+        .menu-list {
+            -webkit-overflow-scrolling:touch;
+            overflow: auto;
+            position: relative;
+            margin-left:   150px;
+
+
+        }
+        .menu_button {
+            height: 60px;
+			width: 100px;
+            border-radius: 5px;
+            border: solid 1px gray;
+            margin: 5px;
+			padding: 5px;
+            text-align: center;
+			text-decoration: none;
+			font-size: 16pt;
+			background-color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: red;
+        }
+        .group {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: gray;
+            min-height: 90%;
+            align-content: flex-start;
+            justify-content: center;
+        }
+        .item_link {
+            width: 20%;
+            height: 70px;
+            text-decoration: none;
+            border: solid 1px;
+            margin: 5px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+        }
+        
+        
+        .cell_group_name {
+            top: 0;
+            position: sticky;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #24b535;
+            font-family: sans-serif;
+            font-size: 24pt;
+            text-align: center;
+            background-color: beige;
+            height: 10%;
+        }

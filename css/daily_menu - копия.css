@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+body {
+  font-family: Arial;
+  font-size: 15px;
+  text-align: left;
+  margin-left:0px
+	}
+
+
+
+.groupname {
+    background-color:  inherit;
+    width:500px;
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 1.0em;
+    text-align: center;
+    font-weight:bold;
+}
+.name {
+  background-color:  inherit;
+  width:500px;
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  color: #008000;
+  font-family: Arial;
+  font-size: 1.0em;
+  text-align: left;
+  font-weight:normal;
+    margin-left:10px
+}
+.weight {
+  background-color:  inherit;
+  width:100px;
+  position: absolute;
+  top: 0px;
+  left: 600px;
+  font-family: Arial;
+  color: inherit;
+  font-size: 0.9em;
+  text-align: center;
+  font-weight:100;
+}
+.calories {
+    background-color:  inherit;
+    width:100px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-family: Arial;
+    color: inherit;
+    font-size: 1.0em;
+    text-align: center;
+    font-weight:100;
+}
+.price {
+  background-color:  inherit;
+  width:100px;
+  position: absolute;
+  top: 0px;
+  left: 700px;
+  color: #FF4500;
+  font-family: Arial;
+  font-size: 1.0em;
+  text-align: center;
+  font-weight:bold;
+}
+
+
+

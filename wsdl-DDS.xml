@@ -1,0 +1,649 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns1="urn:DepServerSOAPIntf" name="IDepServerSOAPservice" targetNamespace="http://tempuri.org/">
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:DepServerSOAPIntf">
+<complexType name="TAuth">
+<sequence>
+<element name="Pass" type="xs:string"/>
+</sequence>
+</complexType>
+<complexType name="TCard">
+<sequence>
+<element name="CardID" type="xs:string"/>
+<element name="MasterID" type="xs:string"/>
+<element name="ParentID" type="xs:string"/>
+<element name="IsGroup" type="xs:int"/>
+<element name="Code" type="xs:string"/>
+<element name="ContractorID" type="xs:string"/>
+<element name="BalanceFlag" type="xs:int"/>
+<element name="Description" type="xs:string"/>
+<element name="Balance" type="xs:double"/>
+<element name="CreditMax" type="xs:double"/>
+<element name="Active" type="xs:int"/>
+<element name="ActDateTime" type="xs:string"/>
+<element name="EndDateTime" type="xs:string"/>
+<element name="Turnover" type="xs:double"/>
+<element name="LastDateTime" type="xs:string"/>
+<element name="LastID" type="xs:string"/>
+<element name="CreditInfinite" type="xs:int"/>
+<element name="Restrictions" type="ns1:TRestrictions"/>
+<element name="Name" type="xs:string"/>
+<element name="Blocked" type="xs:int"/>
+<element name="BlockedDescription" type="xs:string"/>
+<element name="DiscountFlag" type="xs:int"/>
+<element name="RptPeriodType" type="xs:int"/>
+<element name="RptPeriodNum" type="xs:int"/>
+<element name="Password" type="xs:string"/>
+<element name="Coupon" type="xs:int"/>
+<element name="PhoneNumber" type="xs:string"/>
+</sequence>
+</complexType>
+<complexType name="TRestrictions">
+<sequence>
+<element name="ModeRestrictions" type="xs:int"/>
+<element name="DayCount" type="xs:int"/>
+<element name="WeekCount" type="xs:int"/>
+<element name="MonthCount" type="xs:int"/>
+<element name="YearCount" type="xs:int"/>
+<element name="DaySum" type="xs:double"/>
+<element name="WeekSum" type="xs:double"/>
+<element name="MonthSum" type="xs:double"/>
+<element name="YearSum" type="xs:double"/>
+<element name="StartDaySec" type="xs:int"/>
+</sequence>
+</complexType>
+<complexType name="TResult">
+<sequence>
+<element name="ResultCode" type="xs:int"/>
+<element name="ResultDescription" type="xs:string"/>
+</sequence>
+</complexType>
+<complexType name="TActivateCardParams">
+<sequence>
+<element name="CardID" type="xs:string"/>
+<element name="MasterID" type="xs:string"/>
+<element name="Code" type="xs:string"/>
+<element name="ContractorID" type="xs:string"/>
+<element name="Description" type="xs:string"/>
+<element name="CreditMax" type="xs:double"/>
+<element name="CreditInfinite" type="xs:int"/>
+</sequence>
+</complexType>
+<complexType name="TCardArray">
+<complexContent>
+<restriction base="soapenc:Array">
+<sequence/>
+<attribute xmlns:n1="http://schemas.xmlsoap.org/wsdl/" ref="soapenc:arrayType" n1:arrayType="ns1:TCard[]"/>
+</restriction>
+</complexContent>
+</complexType>
+<complexType name="TTransactionParamsIn">
+<sequence>
+<element name="CardID" type="xs:string"/>
+<element name="Code" type="xs:string"/>
+<element name="TransactionType" type="xs:int"/>
+<element name="Sum" type="xs:double"/>
+<element name="SalePlace" type="xs:string"/>
+<element name="Author" type="xs:string"/>
+<element name="Description" type="xs:string"/>
+<element name="SystemID" type="xs:string"/>
+<element name="DocId" type="xs:string"/>
+<element name="KKMID" type="xs:string"/>
+<element name="KKMName" type="xs:string"/>
+<element name="CheckStructure" type="xs:string"/>
+<element name="SumBonusPays" type="xs:double"/>
+<element name="Password" type="xs:string"/>
+</sequence>
+</complexType>
+<complexType name="TTransactionParamsOut">
+<sequence>
+<element name="TransactionID" type="xs:string"/>
+<element name="TransactionDateTime" type="xs:string"/>
+<element name="Balance" type="xs:double"/>
+<element name="Turnover" type="xs:double"/>
+<element name="Counters" type="ns1:TCounters"/>
+<element name="CardTitle" type="xs:string"/>
+<element name="RptPeriodBegin" type="xs:string"/>
+<element name="RptPeriodSum" type="xs:double"/>
+</sequence>
+</complexType>
+<complexType name="TCounters">
+<sequence>
+<element name="RstDayCount" type="xs:int"/>
+<element name="RstWeekCount" type="xs:int"/>
+<element name="RstMonthCount" type="xs:int"/>
+<element name="RstYearCount" type="xs:int"/>
+<element name="RstDaySum" type="xs:double"/>
+<element name="RstWeekSum" type="xs:double"/>
+<element name="RstMonthSum" type="xs:double"/>
+<element name="RstYearSum" type="xs:double"/>
+<element name="DayCount" type="xs:int"/>
+<element name="WeekCount" type="xs:int"/>
+<element name="MonthCount" type="xs:int"/>
+<element name="YearCount" type="xs:int"/>
+<element name="DaySum" type="xs:double"/>
+<element name="WeekSum" type="xs:double"/>
+<element name="MonthSum" type="xs:double"/>
+<element name="YearSum" type="xs:double"/>
+</sequence>
+</complexType>
+<complexType name="TTransactionParamsFull">
+<sequence>
+<element name="TransactionID" type="xs:string"/>
+<element name="CardID" type="xs:string"/>
+<element name="MasterID" type="xs:string"/>
+<element name="TransactionDateTime" type="xs:string"/>
+<element name="TransactionType" type="xs:int"/>
+<element name="Sum" type="xs:double"/>
+<element name="Status" type="xs:int"/>
+<element name="SalePlace" type="xs:string"/>
+<element name="Author" type="xs:string"/>
+<element name="Description" type="xs:string"/>
+<element name="SystemID" type="xs:string"/>
+<element name="DocId" type="xs:string"/>
+<element name="KKMID" type="xs:string"/>
+<element name="KKMName" type="xs:string"/>
+<element name="CheckStructure" type="xs:string"/>
+</sequence>
+</complexType>
+<complexType name="TTransactionsFilter">
+<sequence>
+<element name="CardID" type="xs:string"/>
+<element name="BeginDateTime" type="xs:string"/>
+<element name="EndDateTime" type="xs:string"/>
+<element name="DocId" type="xs:string"/>
+<element name="KKMID" type="xs:string"/>
+<element name="TransactionType" type="xs:int"/>
+<element name="Sum" type="xs:double"/>
+<element name="Status" type="xs:int"/>
+<element name="SalePlace" type="xs:string"/>
+<element name="Author" type="xs:string"/>
+<element name="SystemID" type="xs:string"/>
+<element name="KKMName" type="xs:string"/>
+</sequence>
+</complexType>
+<complexType name="TTransactionParamsFullArray">
+<complexContent>
+<restriction base="soapenc:Array">
+<sequence/>
+<attribute xmlns:n1="http://schemas.xmlsoap.org/wsdl/" ref="soapenc:arrayType" n1:arrayType="ns1:TTransactionParamsFull[]"/>
+</restriction>
+</complexContent>
+</complexType>
+<complexType name="TBalanceInfo">
+<sequence>
+<element name="Balance" type="xs:double"/>
+<element name="Counters" type="ns1:TCounters"/>
+</sequence>
+</complexType>
+</schema>
+</types>
+<message name="GetVersion0Request">
+<part name="Auth" type="ns1:TAuth"/>
+</message>
+<message name="GetVersion0Response">
+<part name="return" type="xs:string"/>
+</message>
+<message name="WriteCard1Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="Card" type="ns1:TCard"/>
+</message>
+<message name="WriteCard1Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="DeleteCard2Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="CardID" type="xs:string"/>
+</message>
+<message name="DeleteCard2Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="ActivateCard3Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="ActivateCardParams" type="ns1:TActivateCardParams"/>
+</message>
+<message name="ActivateCard3Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="DeactivateCard4Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="CardID" type="xs:string"/>
+</message>
+<message name="DeactivateCard4Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="GetCard5Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="CardID" type="xs:string"/>
+</message>
+<message name="GetCard5Response">
+<part name="Card" type="ns1:TCard"/>
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="GetCardByCode6Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="Code" type="xs:string"/>
+</message>
+<message name="GetCardByCode6Response">
+<part name="Card" type="ns1:TCard"/>
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="FindCardsByString7Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="SubStr" type="xs:string"/>
+</message>
+<message name="FindCardsByString7Response">
+<part name="CardArray" type="ns1:TCardArray"/>
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="FindCardsByStringXML8Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="SubStr" type="xs:string"/>
+</message>
+<message name="FindCardsByStringXML8Response">
+<part name="XMLCards" type="xs:string"/>
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="Transaction9Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="TransactionParamsIn" type="ns1:TTransactionParamsIn"/>
+</message>
+<message name="Transaction9Response">
+<part name="TransactionParamsOut" type="ns1:TTransactionParamsOut"/>
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="ConfirmTransaction10Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="TransactionID" type="xs:string"/>
+</message>
+<message name="ConfirmTransaction10Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="GetTransaction11Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="TransactionID" type="xs:string"/>
+</message>
+<message name="GetTransaction11Response">
+<part name="TransactionParamsFull" type="ns1:TTransactionParamsFull"/>
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="GetTransactions12Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="TransactionsFilter" type="ns1:TTransactionsFilter"/>
+</message>
+<message name="GetTransactions12Response">
+<part name="TransactionParamsFullArray" type="ns1:TTransactionParamsFullArray"/>
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="GetTransactionsXML13Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="TransactionsFilter" type="ns1:TTransactionsFilter"/>
+</message>
+<message name="GetTransactionsXML13Response">
+<part name="XMLTransactionParams" type="xs:string"/>
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="GetBalance14Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="CardID" type="xs:string"/>
+<part name="CardCode" type="xs:string"/>
+<part name="Mode" type="xs:int"/>
+</message>
+<message name="GetBalance14Response">
+<part name="BalanceInfo" type="ns1:TBalanceInfo"/>
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="CheckPassword15Request">
+<part name="Auth" type="ns1:TAuth"/>
+</message>
+<message name="CheckPassword15Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="BlockCard16Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="CardID" type="xs:string"/>
+<part name="CardCode" type="xs:string"/>
+<part name="Mode" type="xs:int"/>
+<part name="BlockDescription" type="xs:string"/>
+</message>
+<message name="BlockCard16Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="SetCardParent17Request">
+<part name="Auth" type="ns1:TAuth"/>
+<part name="CardID" type="xs:string"/>
+<part name="ParentID" type="xs:string"/>
+</message>
+<message name="SetCardParent17Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="ExecuteCommand18Request">
+<part name="Request" type="xs:string"/>
+<part name="Response" type="xs:string"/>
+<part name="ResultDescription" type="xs:string"/>
+</message>
+<message name="ExecuteCommand18Response">
+<part name="Response" type="xs:string"/>
+<part name="ResultDescription" type="xs:string"/>
+<part name="return" type="xs:int"/>
+</message>
+<message name="GetBonusRulesXML19Request">
+<part name="aAuth" type="ns1:TAuth"/>
+<part name="aCardID" type="xs:string"/>
+</message>
+<message name="GetBonusRulesXML19Response">
+<part name="aXMLRules" type="xs:string"/>
+<part name="aRes" type="ns1:TResult"/>
+</message>
+<message name="WriteBonusRulesXML20Request">
+<part name="aAuth" type="ns1:TAuth"/>
+<part name="aCardID" type="xs:string"/>
+<part name="aXMLRules" type="xs:string"/>
+</message>
+<message name="WriteBonusRulesXML20Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<message name="ResetChildBonusRules21Request">
+<part name="aAuth" type="ns1:TAuth"/>
+<part name="aCardID" type="xs:string"/>
+</message>
+<message name="ResetChildBonusRules21Response">
+<part name="Res" type="ns1:TResult"/>
+</message>
+<portType name="IDepServerSOAP">
+<operation name="GetVersion">
+<input message="tns:GetVersion0Request"/>
+<output message="tns:GetVersion0Response"/>
+</operation>
+<operation name="WriteCard">
+<input message="tns:WriteCard1Request"/>
+<output message="tns:WriteCard1Response"/>
+</operation>
+<operation name="DeleteCard">
+<input message="tns:DeleteCard2Request"/>
+<output message="tns:DeleteCard2Response"/>
+</operation>
+<operation name="ActivateCard">
+<input message="tns:ActivateCard3Request"/>
+<output message="tns:ActivateCard3Response"/>
+</operation>
+<operation name="DeactivateCard">
+<input message="tns:DeactivateCard4Request"/>
+<output message="tns:DeactivateCard4Response"/>
+</operation>
+<operation name="GetCard">
+<input message="tns:GetCard5Request"/>
+<output message="tns:GetCard5Response"/>
+</operation>
+<operation name="GetCardByCode">
+<input message="tns:GetCardByCode6Request"/>
+<output message="tns:GetCardByCode6Response"/>
+</operation>
+<operation name="FindCardsByString">
+<input message="tns:FindCardsByString7Request"/>
+<output message="tns:FindCardsByString7Response"/>
+</operation>
+<operation name="FindCardsByStringXML">
+<input message="tns:FindCardsByStringXML8Request"/>
+<output message="tns:FindCardsByStringXML8Response"/>
+</operation>
+<operation name="Transaction">
+<input message="tns:Transaction9Request"/>
+<output message="tns:Transaction9Response"/>
+</operation>
+<operation name="ConfirmTransaction">
+<input message="tns:ConfirmTransaction10Request"/>
+<output message="tns:ConfirmTransaction10Response"/>
+</operation>
+<operation name="GetTransaction">
+<input message="tns:GetTransaction11Request"/>
+<output message="tns:GetTransaction11Response"/>
+</operation>
+<operation name="GetTransactions">
+<input message="tns:GetTransactions12Request"/>
+<output message="tns:GetTransactions12Response"/>
+</operation>
+<operation name="GetTransactionsXML">
+<input message="tns:GetTransactionsXML13Request"/>
+<output message="tns:GetTransactionsXML13Response"/>
+</operation>
+<operation name="GetBalance">
+<input message="tns:GetBalance14Request"/>
+<output message="tns:GetBalance14Response"/>
+</operation>
+<operation name="CheckPassword">
+<input message="tns:CheckPassword15Request"/>
+<output message="tns:CheckPassword15Response"/>
+</operation>
+<operation name="BlockCard">
+<input message="tns:BlockCard16Request"/>
+<output message="tns:BlockCard16Response"/>
+</operation>
+<operation name="SetCardParent">
+<input message="tns:SetCardParent17Request"/>
+<output message="tns:SetCardParent17Response"/>
+</operation>
+<operation name="ExecuteCommand">
+<input message="tns:ExecuteCommand18Request"/>
+<output message="tns:ExecuteCommand18Response"/>
+</operation>
+<operation name="GetBonusRulesXML">
+<input message="tns:GetBonusRulesXML19Request"/>
+<output message="tns:GetBonusRulesXML19Response"/>
+</operation>
+<operation name="WriteBonusRulesXML">
+<input message="tns:WriteBonusRulesXML20Request"/>
+<output message="tns:WriteBonusRulesXML20Response"/>
+</operation>
+<operation name="ResetChildBonusRules">
+<input message="tns:ResetChildBonusRules21Request"/>
+<output message="tns:ResetChildBonusRules21Response"/>
+</operation>
+</portType>
+<binding name="IDepServerSOAPbinding" type="tns:IDepServerSOAP">
+<binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="GetVersion">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="WriteCard">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="DeleteCard">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="ActivateCard">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="DeactivateCard">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="GetCard">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="GetCardByCode">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="FindCardsByString">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="FindCardsByStringXML">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="Transaction">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="ConfirmTransaction">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="GetTransaction">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="GetTransactions">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="GetTransactionsXML">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="GetBalance">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="CheckPassword">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="BlockCard">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="SetCardParent">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="ExecuteCommand">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="GetBonusRulesXML">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="WriteBonusRulesXML">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+<operation name="ResetChildBonusRules">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:DepServerSOAPIntf-IDepServerSOAP"/>
+</output>
+</operation>
+</binding>
+<service name="IDepServerSOAPservice">
+<port name="IDepServerSOAPPort" binding="tns:IDepServerSOAPbinding">
+<address xmlns="http://schemas.xmlsoap.org/wsdl/soap/" location="http://192.168.1.55:10750/soap/IDepServerSOAP"/>
+</port>
+</service>
+</definitions>

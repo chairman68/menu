@@ -1,0 +1,75 @@
+/ip firewall filter
+
+# INPUT
+add chain=input connection-state=invalid action=drop comment="drop invalid connections"
+add chain=input connection-state=related action=accept comment="allow related connections"
+add chain=input connection-state=established action=accept comment="allow established connections"
+
+# ext input
+
+# local input
+add chain=input src-address=192.168.88.0/24 action=accept in-interface=!ether1-gateway
+
+# drop all other input
+add chain=input action=drop comment="drop everything else"
+
+# OUTPUT
+add chain=output action=accept out-interface=ether1-gateway comment="accept everything to internet"
+add chain=output action=accept out-interface=!ether1-gateway comment="accept everything to non internet"
+add chain=output action=accept comment="accept everything"
+
+# FORWARD
+add chain=forward connection-state=invalid action=drop comment="drop invalid connections"
+add chain=forward connection-state=established action=accept comment="allow already established connections"
+add chain=forward connection-state=related action=accept comment="allow related connections"
+
+add chain=forward src-address=0.0.0.0/8 action=drop
+add chain=forward dst-address=0.0.0.0/8 action=drop
+add chain=forward src-address=127.0.0.0/8 action=drop
+add chain=forward dst-address=127.0.0.0/8 action=drop
+add chain=forward src-address=224.0.0.0/3 action=drop
+add chain=forward dst-address=224.0.0.0/3 action=drop
+
+# (1) jumping
+add chain=forward protocol=tcp action=jump jump-target=tcp
+add chain=forward protocol=udp action=jump jump-target=udp
+add chain=forward protocol=icmp action=jump jump-target=icmp
+
+# (3) accept forward from local to internet
+add chain=forward action=accept in-interface=!ether1-gateway out-interface=ether1-gateway
+comment="accept from local to internet"
+
+# (4) drop all other forward
+add chain=forward action=drop comment="drop everything else"
+
+# (2) deny some types common types
+add chain=tcp protocol=tcp dst-port=69 action=drop comment="deny TFTP"
+add chain=tcp protocol=tcp dst-port=111 action=drop comment="deny RPC portmapper"
+add chain=tcp protocol=tcp dst-port=135 action=drop comment="deny RPC portmapper"
+add chain=tcp protocol=tcp dst-port=137-139 action=drop comment="deny NBT"
+add chain=tcp protocol=tcp dst-port=445 action=drop comment="deny cifs"
+add chain=tcp protocol=tcp dst-port=2049 action=drop comment="deny NFS"
+add chain=tcp protocol=tcp dst-port=12345-12346 action=drop comment="deny NetBus"
+add chain=tcp protocol=tcp dst-port=20034 action=drop comment="deny NetBus"
+add chain=tcp protocol=tcp dst-port=3133 action=drop comment="deny BackOriffice"
+add chain=tcp protocol=tcp dst-port=67-68 action=drop comment="deny DHCP"
+
+add chain=udp protocol=udp dst-port=69 action=drop comment="deny TFTP"
+add chain=udp protocol=udp dst-port=111 action=drop comment="deny PRC portmapper"
+add chain=udp protocol=udp dst-port=135 action=drop comment="deny PRC portmapper"
+add chain=udp protocol=udp dst-port=137-139 action=drop comment="deny NBT"
+add chain=udp protocol=udp dst-port=2049 action=drop comment="deny NFS"
+add chain=udp protocol=udp dst-port=3133 action=drop comment="deny BackOriffice"
+
+add chain=icmp protocol=icmp icmp-options=0:0 action=accept comment="echo reply"
+add chain=icmp protocol=icmp icmp-options=3:0 action=accept comment="net unreachable"
+add chain=icmp protocol=icmp icmp-options=3:1 action=accept comment="host unreachable"
+add chain=icmp protocol=icmp icmp-options=3:4 action=accept comment="host unreachable fragmentation required"
+add chain=icmp protocol=icmp icmp-options=4:0 action=accept comment="allow source quench"
+add chain=icmp protocol=icmp icmp-options=8:0 action=accept comment="allow echo request"
+add chain=icmp protocol=icmp icmp-options=11:0 action=accept comment="allow time exceed"
+add chain=icmp protocol=icmp icmp-options=12:0 action=accept comment="allow parameter bad"
+add chain=icmp action=drop comment="deny all other types"
+
+# (5) drop all other forward
+add chain=forward action=drop comment="drop (2) everything else"

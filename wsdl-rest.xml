@@ -1,0 +1,135 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns1="urn:uRestWebServ" name="IRestWebServservice" targetNamespace="http://tempuri.org/">
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:uRestWebServ">
+<simpleType name="TEnumTest">
+<restriction base="string">
+<enumeration value="etNone"/>
+<enumeration value="etAFew"/>
+<enumeration value="etSome"/>
+<enumeration value="etAlot"/>
+</restriction>
+</simpleType>
+<complexType name="TDoubleArray">
+<complexContent>
+<restriction base="soapenc:Array">
+<sequence/>
+<attribute xmlns:n1="http://schemas.xmlsoap.org/wsdl/" ref="soapenc:arrayType" n1:arrayType="xs:double[]"/>
+</restriction>
+</complexContent>
+</complexType>
+<complexType name="TMyEmployee">
+<sequence>
+<element name="LastName" type="xs:string"/>
+<element name="FirstName" type="xs:string"/>
+<element name="Salary" type="xs:double"/>
+</sequence>
+</complexType>
+</schema>
+</types>
+<message name="echoEnum0Request">
+<part name="Value" type="ns1:TEnumTest"/>
+</message>
+<message name="echoEnum0Response">
+<part name="return" type="ns1:TEnumTest"/>
+</message>
+<message name="echoDoubleArray1Request">
+<part name="Value" type="ns1:TDoubleArray"/>
+</message>
+<message name="echoDoubleArray1Response">
+<part name="return" type="ns1:TDoubleArray"/>
+</message>
+<message name="echoMyEmployee2Request">
+<part name="Value" type="ns1:TMyEmployee"/>
+</message>
+<message name="echoMyEmployee2Response">
+<part name="return" type="ns1:TMyEmployee"/>
+</message>
+<message name="echoDouble3Request">
+<part name="Value" type="xs:double"/>
+</message>
+<message name="echoDouble3Response">
+<part name="return" type="xs:double"/>
+</message>
+<message name="ExecRequest4Request">
+<part name="aReqStr" type="xs:string"/>
+</message>
+<message name="ExecRequest4Response">
+<part name="return" type="xs:string"/>
+</message>
+<portType name="IRestWebServ">
+<operation name="echoEnum">
+<input message="tns:echoEnum0Request"/>
+<output message="tns:echoEnum0Response"/>
+</operation>
+<operation name="echoDoubleArray">
+<input message="tns:echoDoubleArray1Request"/>
+<output message="tns:echoDoubleArray1Response"/>
+</operation>
+<operation name="echoMyEmployee">
+<input message="tns:echoMyEmployee2Request"/>
+<output message="tns:echoMyEmployee2Response"/>
+</operation>
+<operation name="echoDouble">
+<input message="tns:echoDouble3Request"/>
+<output message="tns:echoDouble3Response"/>
+</operation>
+<operation name="ExecRequest">
+<input message="tns:ExecRequest4Request"/>
+<output message="tns:ExecRequest4Response"/>
+</operation>
+</portType>
+<binding name="IRestWebServbinding" type="tns:IRestWebServ">
+<binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="echoEnum">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:uRestWebServ-IRestWebServ#echoEnum" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</output>
+</operation>
+<operation name="echoDoubleArray">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:uRestWebServ-IRestWebServ#echoDoubleArray" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</output>
+</operation>
+<operation name="echoMyEmployee">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:uRestWebServ-IRestWebServ#echoMyEmployee" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</output>
+</operation>
+<operation name="echoDouble">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:uRestWebServ-IRestWebServ#echoDouble" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</output>
+</operation>
+<operation name="ExecRequest">
+<operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:uRestWebServ-IRestWebServ#ExecRequest" style="rpc"/>
+<input>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</input>
+<output>
+<body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:uRestWebServ-IRestWebServ"/>
+</output>
+</operation>
+</binding>
+<service name="IRestWebServservice">
+<port name="IRestWebServPort" binding="tns:IRestWebServbinding">
+<address xmlns="http://schemas.xmlsoap.org/wsdl/soap/" location="http://192.168.1.55:29121/soap/IRestWebServ"/>
+</port>
+</service>
+</definitions>

@@ -1,0 +1,45 @@
+@charset "UTF-8";
+body {
+overflow:hidden;
+}
+.slider_wrap {
+	margin: auto 0;
+	width:1920px;
+	height:1060px;
+	position:relative;
+	overflow:hidden; 
+}
+.slider_wrap img {
+	width:100%;
+	height:auto;
+	display:none;
+	position:absolute;
+	top:0;
+	left:0px;
+	overflow:hidden;	
+}
+.slider_wrap img:first-child {
+	display:block;
+}
+#cashback {
+	margin: auto 0;
+	width:1820px;
+	height:960px;
+	position:relative;
+	overflow:hidden;
+	background-color: orangered;
+	color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	padding: 100px;
+	text-align: center;
+	font-size: 70px;
+	
+}
+.discount {
+	text-align: center;
+	font-size: 300px;
+	margin: auto;
+}

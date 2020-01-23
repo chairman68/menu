@@ -1,0 +1,22 @@
+body {
+    font-family: sans-serif;
+}
+table {
+	cellpadding:10px;
+}
+
+
+.cell{
+    width: 100px;
+    height: 50px;
+    background: #ffffff;
+    border-top: solid 1px;
+	border-left: solid 1px;
+	border-color: #aeaeb0;
+    padding: 10px;
+	align:center;
+
+}
+#main {
+	text-align: center;
+}

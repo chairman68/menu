@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+body {
+  font-family: Arial;
+  font-size: 11px;
+  text-align: left;
+  margin-left: 0px
+	}
+
+
+
+.groupname {
+    background-color:  inherit;
+    width: 500px;
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 1.0em;
+    text-align: center;
+    font-weight: bold;
+}
+.name {
+  background-color:  inherit;
+  width: 500px;
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  color: #008000;
+  font-family: Arial;
+  font-size: 1.0em;
+  text-align: left;
+  font-weight: bold;
+    margin-left: 10px
+}
+.weight {
+  background-color:  inherit;
+  width: 100px;
+  position: absolute;
+  top: 0px;
+  left: 600px;
+  font-family: Arial;
+  color: inherit;
+  font-size: 0.9em;
+  text-align: center;
+  font-weight: 100;
+}
+.calories {
+    background-color:  inherit;
+    width: 100px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-family: Arial;
+    color: inherit;
+    font-size: 1.0em;
+    text-align: center;
+    font-weight: 100;
+}
+.price {
+  background-color:  inherit;
+  width: 100px;
+  position: absolute;
+  top: 0px;
+  left: 700px;
+  color: #FF4500;
+  font-family: Arial;
+  font-size: 1.0em;
+  text-align: center;
+  font-weight: bold;
+}
+table {
+    border: none;
+    border-collapse: collapse;
+	background:transparent;
+	color:#FFFFFF;
+	font-size: 1.5em;
+}
+td {
+    
+    border-bottom: 1px dotted;
+
+}
+
+.blockmenu {
+	width:450px;
+	
+	float:left;
+	background-color:#D98233;
+	padding:5px;
+	border-radius:10px;
+	border: #FFFFFF solid 3px;
+	font-size: 1.0em;
+}
+.blanc1 {
+	width:10px;
+	height:50px;
+	float:left;
+}
+.blanc2 {
+	width:900px;
+	height:50px;
+	float:left;
+}

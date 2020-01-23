@@ -1,0 +1,93 @@
+{
+	"db_connect":		{	"server_name"	: "CASH\\RESTART",
+							"kassa": 	[
+											{
+											"Database" 		: "CAFE2019",
+											"Uid" 			: "sa",
+											"PWD" 			: "rarus12",
+											"CharacterSet" 	: "UTF-8"
+											},
+			 								{
+											"Database" 		: "BANKET",
+											"Uid" 			: "sa",
+											"PWD" 			: "rarus12",
+											"CharacterSet" 	: "UTF-8"
+											},
+											{
+											"Database" 		: "CAFE",
+											"Uid" 			: "sa",
+											"PWD" 			: "rarus12",
+											"CharacterSet" 	: "UTF-8"
+											}
+										]
+						},
+
+	"db_1c_connection":	{ 	"user"			: "1",
+							"password"		: "123",
+							"host"			: "192.168.1.47"
+						},
+
+	"ID_MENU_BUFET": 	"44f21079-2737-4807-8b60-c02f717141e0",
+
+	"prod_group":	[
+						{	"name":"Салаты и холодные закуски",
+							"group_ID":	["3D4880A2-1FA0-11E9-BBA7-00155D012807"]
+						},
+						{	"name":"Первые блюда",
+							"group_ID":	["240709B4-1FBF-11E9-BBA7-00155D012807"]
+						},
+						{	"name":"Вторые блюда",
+							"group_ID":	["70A63B0B-1FC2-11E9-BBA7-00155D012807"
+										,"70A63B0C-1FC2-11E9-BBA7-00155D012807"
+										,"70A63B0D-1FC2-11E9-BBA7-00155D012807"
+										,"70A63B0E-1FC2-11E9-BBA7-00155D012807"
+										,"70A63B0F-1FC2-11E9-BBA7-00155D012807"
+										]
+						},
+						{	"name":"Гарниры",
+							"group_ID":	["5DE67B58-1FCC-11E9-BBA7-00155D012807"]
+						},
+						{	"name":"Выпечка",
+							"group_ID":	["5DE67B66-1FCC-11E9-BBA7-00155D012807"]
+						},
+						{	"name":"Напитки",
+							"group_ID":	["5DE67B83-1FCC-11E9-BBA7-00155D012807"]
+						},
+						{	"name":"Прочее",
+							"group_ID":	["B78FED6E-1FD2-11E9-BBA7-00155D012807"]
+						}
+
+					],
+	"show_menu":	[
+						{	"screen_number":1,
+							"name":"Салаты и холодные закуски",
+							"group_ID":	["3D4880A2-1FA0-11E9-BBA7-00155D012807"]
+						},
+						{	"screen_number":2,
+							"name":"Десерты, выпечка и напитки",
+							"group_ID":	["5DE67B66-1FCC-11E9-BBA7-00155D012807"
+										,"5DE67B83-1FCC-11E9-BBA7-00155D012807"
+										]
+						},
+						{	"screen_number":3,
+							"name":"Первые блюда, каши и овощные блюда",
+							"group_ID":	["240709B4-1FBF-11E9-BBA7-00155D012807"
+										,"70A63B0B-1FC2-11E9-BBA7-00155D012807"
+										,"70A63B0C-1FC2-11E9-BBA7-00155D012807"
+										]
+						},
+						{	"screen_number":4,
+							"name":"Вторые блюда",
+							"group_ID":	["70A63B0D-1FC2-11E9-BBA7-00155D012807"
+										,"70A63B0E-1FC2-11E9-BBA7-00155D012807"
+										,"70A63B0F-1FC2-11E9-BBA7-00155D012807"
+										]
+						},
+						{	"screen_number":5,
+							"name":"Гарниры и прочие товары",
+							"group_ID":	["5DE67B58-1FCC-11E9-BBA7-00155D012807"
+										,"B78FED6E-1FD2-11E9-BBA7-00155D012807"]
+						}
+
+					]
+}
