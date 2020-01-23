@@ -3,33 +3,9 @@
  /*Отчет по внесенным авансам по заказам брони*/
 /***************************************************/
 
-/******* Обработчик ошибок SQL Server*/
-function FormatErrors( $errors )
-{
-    /* Display errors. */
-    echo "Error information: ";
-
-    foreach ( $errors as $error )
-    {
-        echo "SQLSTATE: ".$error['SQLSTATE']."";
-        echo "Code: ".$error['code']."";
-        echo "Message: ".$error['message']."";
-    }
-}
-/******* Обработчик ошибок SQL Server*/
-
-$serverName = "CASH\RESTART";
-$connectionOptions = array(
-    "Database" => "CAFE",
-    "Uid" => "sa",
-    "PWD" => "rarus12",
-	"CharacterSet" => "UTF-8"
-);
-//Establishes the connection
-$conn = sqlsrv_connect($serverName, $connectionOptions);
-if(!$conn){
-    echo "Нет подключения к серверу БД!";
-} 
+include ("lib/db_Restart.php");
+$config=json_decode(file_get_contents("json/config.json")); //Получить параметры системы
+$db= new orange\db_Restart ($config,1);
 
 		$tsql= "SELECT 
 			 ord.[DateRsrv],
@@ -41,16 +17,7 @@ if(!$conn){
             ORDER BY ord.[DateRsrv]";
  
 
-$getResults= sqlsrv_query($conn, $tsql);
-
-if ($getResults == FALSE)
-    die(FormatErrors(sqlsrv_errors()));
-$i=1;
-while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-    $order[$i]=$row;
-    $i++;
-}
-sqlsrv_free_stmt($getResults);
+$order= $db->query($tsql);
 
 
 //var_dump($order);
